@@ -1,0 +1,2 @@
+# dva-generate
+dva generate
