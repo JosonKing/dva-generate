@@ -7,6 +7,8 @@ export default {
   namespace: '${modelName}',
   state: {
     ${modelName}s: [],
+    page${capitalModelName}s: [],
+    totalSize: 0,
   },
   subscriptions: {
     setup({ dispatch, history }) {
@@ -50,6 +52,14 @@ export default {
       yield put({ type: '_delete${capitalModelName}', payload: payload });
       callback && callback(data);
     },
+    *getPage${capitalModelName}s({ payload }, { put, call, select }) {
+      var data = yield call(service.getCmd, '${gatwayName}/${modelName}/pages', payload.data);
+      console.log("get${capitalModelName}s", data);
+      if (!!data.error) {
+        return;
+      }
+      yield put({ type: '_savePage${capitalModelName}s', payload: data });
+    },
   },
   reducers: {
     _save${capitalModelName}s(state, { payload }) {
@@ -80,6 +90,9 @@ export default {
       let { ${modelName}s } = state;
       ${modelName}s = ${modelName}s.filter(u => u.id !== payload);
       return { ...state, ${modelName}s };
+    },
+    _savePage${capitalModelName}s(state, { payload }) {
+      return { ...state, page${capitalModelName}s: payload.list, totalSize: payload.totalSize };
     },
   },
 };

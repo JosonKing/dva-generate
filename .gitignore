@@ -5,6 +5,7 @@
 
 # production
 /lib
+/test
 /publish
 
 # misc
