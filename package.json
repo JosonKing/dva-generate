@@ -1,6 +1,6 @@
 {
   "name": "dva-generate",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "dva generate",
   "main": "index.js",
   "bin": {

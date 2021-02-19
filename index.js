@@ -40,8 +40,8 @@ program
     if (!modelName) {
       modelName = 'hello';
     }
-    // const res = await inquirer.prompt(prompList)
-    const res = {template: 'curdPage'};
+    const res = await inquirer.prompt(prompList)
+    // const res = {template: 'curdPage'};
     templates.forEach((item) => {
       if(item.name === res.template) {
         util.mkdirPath('./test');
