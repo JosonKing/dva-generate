@@ -32,5 +32,35 @@
         "upms"
       ]
     },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "dva-gen module curd",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}\\index.js",
+      "args": [
+        "module",
+        "user",
+        "upms",
+        "用户"
+      ]
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "dva-gen module curdPage",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}\\index.js",
+      "args": [
+        "module",
+        "log",
+        "upms",
+        "日志"
+      ]
+    },
   ]
 }

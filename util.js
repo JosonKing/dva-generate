@@ -26,6 +26,15 @@ function mkdirPath(pathStr) {
   return projectPath;
 }
 
+function curDate() {
+  var curDate = new Date();
+  let year = curDate.getFullYear();
+  let moment = curDate.getMonth() + 1;
+  let day = curDate.getDate();
+  return year + (moment > 9 ? moment : '0' + moment) + (day > 9 ? day : '0' + day);
+}
+
 module.exports = {
   mkdirPath,
+  curDate,
 }

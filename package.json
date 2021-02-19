@@ -1,6 +1,6 @@
 {
   "name": "dva-generate",
-  "version": "0.2.8",
+  "version": "0.3.0",
   "description": "dva generate",
   "main": "index.js",
   "bin": {
@@ -29,5 +29,6 @@
   "dependencies": {
     "commander": "^7.0.0",
     "inquirer": "^7.3.3"
-  }
+  },
+  "devDependencies": {}
 }

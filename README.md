@@ -4,11 +4,11 @@ npm install dva-generate -g
 or
 yarn global add dva-generate
 ## use in dva
-- 查看版本
+- version
 ```
 dva-gen -v
 ```
-- 创建model文件
+- generate model file
 ```
 dva-gen model modelName gatwayName
 ```
