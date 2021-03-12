@@ -44,6 +44,36 @@ program
     }
   });
 
+// 设置选项
+program
+  .option('-lm, --listmodule', 'list module')
+  .description('list all module folders')
+  .action(async () => {
+    let system_modules = [];
+    let downPath = '\\src\\pages';
+    const systems = fs.readdirSync(process.cwd() + downPath)
+    systems.forEach((_system, index) => {
+      let downPath = '\\src\\pages';
+      if (fs.statSync(process.cwd() + downPath + '\\' + _system).isDirectory() === true) { 
+        system_modules.push(`\n  // releasePath = 'src/pages/${_system}/*/index.js';`)
+        let modules = fs.readdirSync(process.cwd() + downPath + '\\' + _system)
+        modules.forEach((_module, index) => {
+          if (fs.statSync(process.cwd() + downPath + '\\' + `${_system}` + '\\' + `${_module}`).isDirectory() === true) { 
+              // debugPath = __dirname + '/src/pages/28-system-xkgl/08-module-prison_jjb_report/index.js';
+            system_modules.push(`  // releasePath = 'src/pages/${_system}/${_module}/index.js';`)
+            system_modules.push(`  // debugPath = __dirname + '/src/pages/${_system}/${_module}/index.js';`)
+          }
+        })
+      }
+    })
+    fs.writeFile(process.cwd() + '\\' + 'webpack.module.config.js', system_modules.join('\n'), { encoding: 'utf8' }, err => { if (!!err) {
+      console.log('list modules generate error:', err)
+    } else {
+      console.log('list modules generate success: ./webpack.module.config.js')
+    } })
+    // console.log(system_modules.join('\n'));
+  })
+
 // 创建model命令行
 program
   .command('model <modelName> <gatwayName>')
